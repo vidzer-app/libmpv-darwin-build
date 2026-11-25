@@ -5,9 +5,9 @@
     sha256 = "a4003623cdc0109dec3aac8435520aa3fb12c4d69454fa227f2658cdb6dab5fa";
   };
   ffmpeg = {
-    version = "6.0";
-    url = "https://ffmpeg.org/releases/ffmpeg-6.0.tar.xz";
-    sha256 = "57be87c22d9b49c112b6d24bc67d42508660e6b718b3db89c44e47e289137082";
+    version = "8.1.3";
+    url = "https://ffmpeg.org/releases/ffmpeg-8.1.3.tar.xz";
+    sha256 = "7138d28c96d9d3e3af4ee3d8cad72741f8ffb40da90c1112235dea3ecd3178a3";
   };
   fftools-ffi = {
     version = "9b0d4da0";
@@ -44,6 +44,37 @@
     url = "https://github.com/pnggroup/libpng/archive/v1.6.40.tar.gz";
     sha256 = "62d25af25e636454b005c93cae51ddcd5383c40fa14aa3dae8f6576feb5692c2";
   };
+  # libplacebo and the git submodules its release tarball leaves out (from KangBuilds/libmpv-darwin-build).
+  libplacebo = {
+    version = "7.387.0";
+    url = "https://codeload.github.com/haasn/libplacebo/tar.gz/refs/tags/v7.387.0";
+    sha256 = "f9e62d3774a9c4cfd198ec3abaa88294aaade2e31c04d5ab02bcf4abc98b1df5";
+  };
+  fast_float = {
+    version = "5.2.0";
+    url = "https://github.com/fastfloat/fast_float/archive/refs/tags/v5.2.0.tar.gz";
+    sha256 = "72bbfd1914e414c920e39abdc81378adf910a622b62c45b4c61d344039425d18";
+  };
+  glad = {
+    version = "2.0.4";
+    url = "https://github.com/Dav1dde/glad/archive/refs/tags/v2.0.4.tar.gz";
+    sha256 = "02629644c242dcc27c58222bd2c001d5e2f3765dbbcfd796542308bddebab401";
+  };
+  jinja = {
+    version = "3.1.2";
+    url = "https://github.com/pallets/jinja/archive/refs/tags/3.1.2.tar.gz";
+    sha256 = "ecae76cd1a064d40eb46c5375f07953d747f4d65b68cd3fa5f02c91714b799fc";
+  };
+  markupsafe = {
+    version = "2.1.2";
+    url = "https://github.com/pallets/markupsafe/releases/download/2.1.2/MarkupSafe-2.1.2.tar.gz";
+    sha256 = "abcabc8c2b26036d62d4c746381a6f7cf60aafcc653198ad678306986b09450d";
+  };
+  vulkan_headers = {
+    version = "1.3.243";
+    url = "https://github.com/KhronosGroup/Vulkan-Headers/archive/refs/tags/v1.3.243.tar.gz";
+    sha256 = "76c57490740369a26d68dd26d308e2faa2e0fc5d255498aa48ee389534fc5a48";
+  };
   libpngPatch = {
     version = "1.6.40-1";
     url = "https://wrapdb.mesonbuild.com/v2/libpng_1.6.40-1/get_patch";
@@ -74,10 +105,12 @@
     url = "https://github.com/Mbed-TLS/mbedtls/archive/refs/tags/v3.4.1.tar.gz";
     sha256 = "a420fcf7103e54e775c383e3751729b8fb2dcd087f6165befd13f28315f754f5";
   };
+  # Vidzer: master after the libmpv gpu-next render backend landed (3e8aa53ec1, 2026-11-12).
+  # Switch to the 0.43.0 tag once it is released.
   mpv = {
-    version = "0.36.0";
-    url = "https://github.com/mpv-player/mpv/archive/refs/tags/v0.36.0.tar.gz";
-    sha256 = "29abc44f8ebee013bb2f9fe14d80b30db19b534c679056e4851ceadf5a5e8bf6";
+    version = "0.42.0-35efcf53";
+    url = "https://codeload.github.com/mpv-player/mpv/tar.gz/35efcf53d59470b3941e61a50c8a3133035a093d";
+    sha256 = "cb2c20a8b347b4d167d73570ed5e87155622b0d6d1bbd3e26c57843227bd9301";
   };
   uchardet = {
     version = "0.0.8";

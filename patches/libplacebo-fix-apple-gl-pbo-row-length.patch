@@ -1,0 +1,20 @@
+--- a/src/opengl/gpu_tex.c
++++ b/src/opengl/gpu_tex.c
+@@ -934,7 +934,16 @@
+     // If the user requests asynchronous uploads, it's more efficient to do
+     // them via a PBO - this allows us to skip blocking the caller, especially
+     // when the host pointer can be imported directly.
+-    if (params->callback && !buf) {
++    //
++    // Only do this for tightly packed rows. Apple's OpenGL (layered on Metal;
++    // seen on macOS 27 with an Apple M5 Pro) mishandles GL_UNPACK_ROW_LENGTH
++    // when the source is a PBO: the texture comes out empty or sheared, with
++    // no GL error, while a host pointer upload with the same row length is
++    // correct. mpv's subtitle atlas (stride wider than the packed area) and
++    // software-decoded frames with padded strides both hit this, so padded
++    // rows take the synchronous path below.
++    bool tight_rows = params->row_pitch == pl_rect_w(params->rc) * fmt->texel_size;
++    if (params->callback && !buf && tight_rows) {
+         size_t buf_size = pl_tex_transfer_size(params);
+         const size_t min_size = 32*1024; // 32 KiB
+         if (buf_size >= min_size && buf_size <= gpu->limits.max_buf_size)
