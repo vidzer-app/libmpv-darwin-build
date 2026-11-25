@@ -1,11 +1,13 @@
 name: ci
 
+# Vidzer fork: no tag trigger. Releases on the vidzer branch
+# (v*-vidzer.*) carry the macOS archive that was built and tested locally;
+# a tag build would re-upload every archive under the same names and change
+# the checksum pinned in Vidzer's Makefile.
 on:
   push:
     branches:
       - main
-    tags:
-      - "*"
   pull_request:
     branches:
       - "*"
